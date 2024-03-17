@@ -1,8 +1,12 @@
 #include <iostream>
 
-const int boardSize = 9;
+#include "Board.h"
 
 int main() {
 
-	std::cout << "SDADAS";
+	Board& board = Board::getInstance();
+
+	for (int i = 0; i < 9; i++) {
+		std::cout << board[i] << std::endl;
+	}
 }
