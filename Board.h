@@ -2,17 +2,19 @@
 #define BOARD_H
 
 #include <stdexcept>
+#include <iostream>
+
+#include "Player.h"
 
 class Board {
-
+public:
 	static const int boardSize = 9;
 
 
-
 private:
-	char board[boardSize];
-
-
+	char board[boardSize] = { ' ', ' ', ' ',
+							  ' ', ' ', ' ', 
+							  ' ', ' ', ' ' };
 public:
 	Board() = default;
 
@@ -20,6 +22,7 @@ public:
 		static Board instance;
 		return instance;
 	}
+	// Iterator
 	class Iterator {
 	public:
 		Board& board;
@@ -64,6 +67,18 @@ public:
 	// DISSAWOLLED copy/move assignment operators
 	Board& operator=(const Board& other) = delete;
 	Board& operator=(Board&& other) = delete;
+
+	friend std::ostream& operator<<(std::ostream& oStr, const Board& b);
+
+	friend std::istream& operator>>(std::istream & iStr, Board& b);
+
+	const char* getBoard () {
+		return board;
+	}
+
+	char getBoardIndex(int index) const ;
+	
+	void setCharToIndex(int index, char c);
 
 
 };
