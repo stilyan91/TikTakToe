@@ -80,7 +80,15 @@ public:
 	
 	void setCharToIndex(int index, char c);
 
+	bool checkDiagonals() const;
 
+	bool checkVerticals() const;
+
+	bool checkHorizontals() const;
+
+	bool checkForWin(Player& p) const ;
+
+	bool isNewGame();
 };
 
 

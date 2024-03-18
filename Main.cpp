@@ -39,8 +39,6 @@ int main() {
 	if (player1.getChar() == player2.getChar())
 		player2.setChar('O');
 
-	while (true) {
-
 	std::cout << "Wellcome, to my Tik Tak Toe game." << std::endl
 		<< "Enter the name for player 1: " << std::endl;
 	std::string name;
@@ -49,16 +47,33 @@ int main() {
 	std::cin >> player2;
 	std::cout << "The game is starting." << std::endl;
 
+
+
 		while (true) {
-			
-			
 			playerMove(board, player1);
+			if(board.checkForWin(player1))
+			{
+				std::cout << "The winner is " << player2.getName() << std::endl;
+				std::cout << "Current result is " << player1.getName() << " - " << player1.getWins()
+					<< " : " << player2.getName() << " - " << player2.getWins() << std::endl;
+				std::cout << "Do you want to play again ?(1 - yes or 2 - no)" << std::endl;
+				if (!board.isNewGame())
+					return 0;
+				else
+					continue;
+			}
 
 			playerMove(board, player2);
+			if (board.checkForWin(player2)) {
+				std::cout << "The winner is " << player2.getName() << std::endl;
+				std::cout << "Current result is " << player1.getName() << " - " << player1.getWins()
+					<< " : " << player2.getName() << " - " << player2.getWins() << std::endl;
+				std::cout << "Do you want to play again ?(1 - yes or 2 - no)" << std::endl;
 
+				if (!board.isNewGame())
+					return 0;
+				else
+					continue;
+			}
 		}
-	}
-
-	
-	
 }
